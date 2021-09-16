@@ -1,6 +1,6 @@
 # see https://github.com/SwissDataScienceCenter/renkulab-docker
 # to swap this image for the latest version available
-FROM renku/renkulab-bioc:RELEASE_3_12-0.10.1
+FROM bioconductor/bioconductor_docker:RELEASE_3_13
 
 # Uncomment and adapt if code is to be included in the image
 # COPY src /code/src
@@ -19,10 +19,6 @@ FROM renku/renkulab-bioc:RELEASE_3_12-0.10.1
 # install the R dependencies
 COPY install.R /tmp/
 RUN R -f /tmp/install.R
-
-# install the python dependencies
-COPY requirements.txt /tmp/
-RUN pip3 install -r /tmp/requirements.txt
 
 # RENKU_VERSION determines the version of the renku CLI
 # that will be used in this image. To find the latest version,
